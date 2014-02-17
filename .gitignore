@@ -3,7 +3,7 @@
 #################
 
 *.pydevproject
-.project
+#.project
 .metadata
 bin/
 tmp/
@@ -12,7 +12,7 @@ tmp/
 *.swp
 *~.nib
 local.properties
-.classpath
+#.classpath
 .settings/
 .loadpath
 
@@ -214,3 +214,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+proj.android/build.xml
+proj.android/gen/com/android/cff/R.java
+proj.android/gen/com/android/cff/BuildConfig.java
