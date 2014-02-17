@@ -1,14 +1,6 @@
 #include "TouchLayer.h"
 #include "HelloWorldScene.h"
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-#include <android/log.h>
-
-#define  LOG_TAG    "main"
-#define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
-#else
-#define  LOGD(...)
-#endif
+#include "Unity.h"
 
 bool TouchLayer::init()
 {

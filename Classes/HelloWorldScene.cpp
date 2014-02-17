@@ -17,6 +17,11 @@ CCScene* HelloWorld::scene()
     return scene;
 }
 
+void HelloWorld::onExit()
+{
+
+}
+
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
@@ -44,8 +49,11 @@ bool HelloWorld::init()
 	pCloseItem->setPosition(ccp(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,
                                 origin.y + pCloseItem->getContentSize().height/2));
 
+	CCMenuItem *pInputItem = CCMenuItemFont::create("change text",this,menu_selector(HelloWorld::menuInputCallback));
+	pInputItem->setPosition(ccp(origin.x + (visibleSize.width)/2,origin.y + (visibleSize.height)/2+100));
+
     // create menu, it's an autorelease object
-    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+    CCMenu* pMenu = CCMenu::create(pCloseItem,pInputItem, NULL);
     pMenu->setPosition(CCPointZero);
     this->addChild(pMenu, 1);
 
@@ -77,6 +85,15 @@ bool HelloWorld::init()
     pThings->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     this->addChild(pThings, 0,4);
 
+	CCTextFieldTTF* text = CCTextFieldTTF::textFieldWithPlaceHolder("Input Your Name...", "Arial", 20);
+	text->setPosition(ccp(origin.x + (visibleSize.width)/2,origin.y + (visibleSize.height)/2+50));
+	this->addChild(text,0,6);
+	HelloWorldTextFieldDelegate* textDelegate = new HelloWorldTextFieldDelegate;
+	textDelegate->m_pLayer = this;
+	textDelegate->autorelease();
+	this->addChild(textDelegate);
+	text->setDelegate(textDelegate);
+	//text->attachWithIME();
     return true;
 }
 
@@ -91,4 +108,24 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
     exit(0);
 #endif
 #endif
+}
+
+void HelloWorld::menuInputCallback(CCObject* pSender)
+{
+	CCTextFieldTTF* text = dynamic_cast<CCTextFieldTTF*>(this->getChildByTag(6));
+	text->attachWithIME();
+}
+
+bool HelloWorldTextFieldDelegate::onTextFieldAttachWithIME(CCTextFieldTTF *sender)
+{
+	if(m_pLayer)
+		m_pLayer->setPosition(ccp(0,100));
+	return false;
+}
+
+bool HelloWorldTextFieldDelegate::onTextFieldDetachWithIME(CCTextFieldTTF *sender)
+{
+	if(m_pLayer)
+		m_pLayer->setPosition(ccp(0,0));
+	return false;
 }

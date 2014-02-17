@@ -2,6 +2,7 @@
 #define __TOUCH_LAYER_H__
 
 #include "cocos2d.h"
+
 USING_NS_CC;
 
 class TouchLayer : public CCLayer

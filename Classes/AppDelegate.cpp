@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "TouchLayer.h"
+#include "AccelermeterLayer.h"
 
 USING_NS_CC;
 
@@ -28,7 +29,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
     CCScene *pScene = HelloWorld::scene();
 	CCLayer* touchLayer = TouchLayer::create();
+	CCLayer* accelermeterLayer = AccelermeterLayer::create();
 	pScene->addChild(touchLayer,1,3);
+	pScene->addChild(accelermeterLayer,1,5);
 
     // run
     pDirector->runWithScene(pScene);
