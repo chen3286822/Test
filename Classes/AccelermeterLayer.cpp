@@ -39,4 +39,5 @@ void AccelermeterLayer::didAccelerate(CCAcceleration* pAccelerationValue)
 	FIX_POS(ptNext.x, (origin.x+ballSize.width / 2.0), (origin.x + visibleSize.width - ballSize.width / 2.0));
 	FIX_POS(ptNext.y, (origin.y+ballSize.height / 2.0), (origin.y + visibleSize.height - ballSize.height / 2.0));
 	spr->setPosition(ptNext);
-}
+
+} 
