@@ -218,3 +218,4 @@ proj.android/build.xml
 proj.android/gen/com/android/cff/R.java
 proj.android/gen/com/android/cff/BuildConfig.java
 proj.android/libs/armeabi/libcocos2dcpp.so
+proj.android/build_native.sh
